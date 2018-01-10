@@ -26,7 +26,7 @@ public class AymanDTW {
         for (int Gestures=1;Gestures<=20;Gestures++)//Test all gestures
         {
             int CountCorrect=0;
-            for (int i=7;i<=20;i++)//loop for all the 16 gestures of gesture 1
+            for (int i=5;i<=20;i++)//loop for all the 16 gestures of gesture 1
             {
              String filename="U0"+users+"\\"+String.format("%02d", Gestures)+"\\"+String.format("%02d", i)+".txt";
              Gesture testgesture=Helper.LoadGesture(filename);
@@ -39,12 +39,12 @@ public class AymanDTW {
              }
             }
             GesturesAccuracy[Gestures-1]+=CountCorrect;
-            System.out.println("User "+users+ " Gesture " +Gestures  +" Accuracy = " + (CountCorrect/14.0)*100 + "%");
+            System.out.println("User "+users+ " Gesture " +Gestures  +" Accuracy = " + (CountCorrect/16.0)*100 + "%");
         }
         }
         for (int i=1;i<=20;i++)
         {
-            System.out.println("Gesture "+i + " Total Accuracy = "+ GesturesAccuracy[i-1]/(double)(14*8)*100);
+            System.out.println("Gesture "+i + " Total Accuracy = "+ GesturesAccuracy[i-1]/(double)(16*8)*100);
         }
         
         

@@ -25,7 +25,7 @@ public class TemplateGesture {
                 for (int user=1;user<=8;user++) // loop on all the users and get the first 4 tempaltes for each one of them to  be the template for the gesture
                 {
                 
-                    for (int i=1;i<=6;i++)
+                    for (int i=1;i<=4;i++)
                     {
                     Gesture gesture=new Gesture();
                     gesture.GestureName=TemplateGestureName;
