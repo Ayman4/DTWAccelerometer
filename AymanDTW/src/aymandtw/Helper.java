@@ -23,8 +23,8 @@ public class Helper {
                    
 
                    //     Vector <Double>TemplateX=new Vector <Double>() ;
-                     BufferedReader Bf=new BufferedReader(new FileReader("D:\\GateWay\\Class\\Research Group\\2017\\My Work\\gestures-dataset\\gestures-dataset\\"+filename));
-                   //BufferedReader Bf=new BufferedReader(new FileReader("D:\\GateWay\\Research Group\\2017\\My Work\\DTW_NEW\\gestures-dataset\\gestures-dataset\\"+filename));
+                  //   BufferedReader Bf=new BufferedReader(new FileReader("D:\\GateWay\\Class\\Research Group\\2017\\My Work\\gestures-dataset\\gestures-dataset\\"+filename));
+                   BufferedReader Bf=new BufferedReader(new FileReader("D:\\GateWay\\Research Group\\2017\\My Work\\DTW_NEW\\gestures-dataset\\gestures-dataset\\"+filename));
                    String Line=Bf.readLine();
                     while (Line!=null)
                     {

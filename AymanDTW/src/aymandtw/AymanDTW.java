@@ -6,6 +6,7 @@
 package aymandtw;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,18 +17,27 @@ public class AymanDTW {
     /**
      * @param args the command line arguments
      */
+    static ArrayList<Integer>  TemplateIndecis=new ArrayList<Integer>();
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
+        
+        TemplateIndecis.add(2);
+        TemplateIndecis.add(3);
+        TemplateIndecis.add(4);
+        TemplateIndecis.add(5);
         AllTemplateofGestures tempalteofGes=new AllTemplateofGestures();
-        //System.out.println("Size " + tempalteofGes.AlltemplateofGestures.size());
+       
         double GesturesAccuracy[]=new double[20];
         for (int users=1;users<=8;users++)//Test all gestures
         {
         for (int Gestures=1;Gestures<=20;Gestures++)//Test all gestures
         {
             int CountCorrect=0;
-            for (int i=5;i<=20;i++)//loop for all the 16 gestures of gesture 1
+            for (int i=1;i<=20;i++)//loop for all the 16 gestures of gesture 1
             {
+             if (!TemplateIndecis.contains(i))   
+             {
+                // System.out.println("I=" + i);
              String filename="U0"+users+"\\"+String.format("%02d", Gestures)+"\\"+String.format("%02d", i)+".txt";
              Gesture testgesture=Helper.LoadGesture(filename);
              Recognizer rec;
@@ -38,13 +48,14 @@ public class AymanDTW {
                  CountCorrect++;
              }
             }
+            }
             GesturesAccuracy[Gestures-1]+=CountCorrect;
-            System.out.println("User "+users+ " Gesture " +Gestures  +" Accuracy = " + (CountCorrect/16.0)*100 + "%");
+            System.out.println("User "+users+ " Gesture " +Gestures  +" Accuracy = " + (CountCorrect/(20.0-TemplateIndecis.size()))*100 + "%");
         }
         }
         for (int i=1;i<=20;i++)
         {
-            System.out.println("Gesture "+i + " Total Accuracy = "+ GesturesAccuracy[i-1]/(double)(16*8)*100);
+            System.out.println("Gesture "+i + " Total Accuracy = "+ GesturesAccuracy[i-1]/(double)((20.0-TemplateIndecis.size())*8)*100);
         }
         
         
