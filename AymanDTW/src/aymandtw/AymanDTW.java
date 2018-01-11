@@ -21,10 +21,11 @@ public class AymanDTW {
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         
+        TemplateIndecis.add(3);
         TemplateIndecis.add(1);
-        TemplateIndecis.add(9);
-        TemplateIndecis.add(13);
-        TemplateIndecis.add(18);
+        
+        
+        
         AllTemplateofGestures tempalteofGes=new AllTemplateofGestures();
        
         double GesturesAccuracy[]=new double[20];
@@ -53,11 +54,15 @@ public class AymanDTW {
             System.out.println("User "+users+ " Gesture " +Gestures  +" Accuracy = " + (CountCorrect/(20.0-TemplateIndecis.size()))*100 + "%");
         }
         }
+        double GeneralAccuracy=0;
+        double SumAccuracy=0;
         for (int i=1;i<=20;i++)
         {
-            System.out.println("Gesture "+i + " Total Accuracy = "+ GesturesAccuracy[i-1]/(double)((20.0-TemplateIndecis.size())*8)*100);
+            GeneralAccuracy=GesturesAccuracy[i-1]/(double)((20.0-TemplateIndecis.size())*8)*100;
+            System.out.println("Gesture "+i + " Total Accuracy = "+ GeneralAccuracy) ;
+            SumAccuracy+=GeneralAccuracy;
         }
-        
+        System.out.println("General Acuracy = " + GeneralAccuracy/20.0*100);
         
       //  System.out.println("Gesture Name " + tempalteofGes.AlltemplateofGestures.get(19).TemplateGestures.get(0).Points.get(2).ACCY);
     }
