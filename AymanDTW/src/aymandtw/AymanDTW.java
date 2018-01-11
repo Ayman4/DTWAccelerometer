@@ -21,10 +21,10 @@ public class AymanDTW {
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         
-        TemplateIndecis.add(2);
-        TemplateIndecis.add(3);
-        TemplateIndecis.add(4);
-        TemplateIndecis.add(5);
+        TemplateIndecis.add(1);
+        TemplateIndecis.add(9);
+        TemplateIndecis.add(13);
+        TemplateIndecis.add(18);
         AllTemplateofGestures tempalteofGes=new AllTemplateofGestures();
        
         double GesturesAccuracy[]=new double[20];
