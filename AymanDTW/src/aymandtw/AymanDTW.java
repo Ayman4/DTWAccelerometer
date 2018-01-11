@@ -62,7 +62,7 @@ public class AymanDTW {
             System.out.println("Gesture "+i + " Total Accuracy = "+ GeneralAccuracy) ;
             SumAccuracy+=GeneralAccuracy;
         }
-        System.out.println("General Acuracy = " + SumAccuracy/20.0*100);
+        System.out.println("General Acuracy = " + SumAccuracy/20.0);
         
       //  System.out.println("Gesture Name " + tempalteofGes.AlltemplateofGestures.get(19).TemplateGestures.get(0).Points.get(2).ACCY);
     }
