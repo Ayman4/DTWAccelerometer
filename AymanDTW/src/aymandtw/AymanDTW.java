@@ -6,7 +6,14 @@
 package aymandtw;
 
 import java.io.IOException;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 /**
  *
@@ -18,13 +25,20 @@ public class AymanDTW {
      * @param args the command line arguments
      */
     static ArrayList<Integer>  TemplateIndecis=new ArrayList<Integer>();
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {
         // TODO code application logic here
         
-        TemplateIndecis.add(3);
+        
+        
+        Instant now = Instant.now(); // Start clock at now
+        
+        
+        
+        
         TemplateIndecis.add(1);
-        
-        
+        TemplateIndecis.add(9);
+        TemplateIndecis.add(13);
+        TemplateIndecis.add(18);
         
         AllTemplateofGestures tempalteofGes=new AllTemplateofGestures();
        
@@ -63,6 +77,8 @@ public class AymanDTW {
             SumAccuracy+=GeneralAccuracy;
         }
         System.out.println("General Acuracy = " + SumAccuracy/20.0);
+        Duration d = Duration.between(now, Instant.now());
+        System.out.println("Time Taken: "+d); // Total time taken
         
       //  System.out.println("Gesture Name " + tempalteofGes.AlltemplateofGestures.get(19).TemplateGestures.get(0).Points.get(2).ACCY);
     }

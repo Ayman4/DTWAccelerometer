@@ -5,20 +5,22 @@
  */
 package aymandtw;
 
+import java.time.Instant;
 import java.util.Vector;
+import java.util.concurrent.Callable;
 
 /**
  *
  * @author ayman.ezzat
  */
-public class DTW implements Recognizer
+public class DTW implements Recognizer 
 {
-    
-         
+            
     @Override
     public int Recognize(Gesture Test, AllTemplateofGestures template) {
                     
-        int result=-1;
+        
+                    int result=-1;
         
                     double MinValue=99999;
                     int MinIndex=0;
@@ -41,4 +43,6 @@ public class DTW implements Recognizer
                   result=MinIndex+1;
   return result;
     }
+
+  
 }
