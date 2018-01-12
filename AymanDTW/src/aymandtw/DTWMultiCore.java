@@ -33,10 +33,18 @@ public class DTWMultiCore {
         System.out.println("Available processor cores is "+cores);
         //cores=1;
         Instant now = Instant.now(); // Start clock at now
-        TemplateIndecis.add(1);
-        TemplateIndecis.add(9);
-        TemplateIndecis.add(13);
-        TemplateIndecis.add(18);
+        double MaxAccAvg=0;
+        int MaxK=0;
+        int MaxJ=0;
+        //Cross Folding
+            for (int k=1;k<=20;k++)
+            {
+            for (int j=k;j<=20;j++)
+            {
+                System.out.println("Trial with K,J" + k + ","+j);
+                TemplateIndecis.clear();
+                TemplateIndecis.add(k);
+                TemplateIndecis.add(j);
         
         
        
@@ -60,7 +68,15 @@ public class DTWMultiCore {
             avg += futures.get(i).get();
         }
         System.out.println("Average is: "+avg/8);
-        
+        if (avg>MaxAccAvg)
+        {
+            MaxAccAvg=avg;
+            MaxJ=j;
+            MaxK=k;
+        }
+       }
+       }
+        System.out.println("MaxAccuracy = " + MaxAccAvg + "Found at K= " + MaxK + " J = " + MaxJ);    
         Duration d = Duration.between(now, Instant.now());
         System.out.println("Time Taken: "+d); // Total time taken
     }

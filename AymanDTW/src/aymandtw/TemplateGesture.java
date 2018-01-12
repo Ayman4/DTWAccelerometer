@@ -27,8 +27,8 @@ public class TemplateGesture {
                 
                     for (int i=1;i<=20;i++)
                     {
-                        if (AymanDTW.TemplateIndecis.contains(i))
-                       // if (DTWMultiCore.TemplateIndecis.contains(i))
+                       // if (AymanDTW.TemplateIndecis.contains(i))
+                        if (DTWMultiCore.TemplateIndecis.contains(i))
                         {
                             Gesture gesture=new Gesture();
                             gesture.GestureName=TemplateGestureName;
