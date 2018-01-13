@@ -7,7 +7,12 @@
 package aymandtw;
 
 import static aymandtw.AymanDTW.TemplateIndecis;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -27,7 +32,11 @@ public class DTWMultiCore {
     public static AllTemplateofGestures tempalteofGes;
     public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {
         // TODO code application logic here
-        
+        //BufferedWriter BW=new BufferedWriter(new FileWriter("D:\\GateWay\\Class\\Research Group\\2017\\My Work\\AymanDTW\\TestSample4.txt",true));
+        File file = new File("D:\\\\GateWay\\\\Class\\\\Research Group\\\\2017\\\\My Work\\\\AymanDTW\\\\TestSample4.txt"); //Your file
+FileOutputStream fos = new FileOutputStream(file);
+PrintStream ps = new PrintStream(fos);
+System.setOut(ps);
         int cores = Runtime.getRuntime().availableProcessors();
         
         System.out.println("Available processor cores is "+cores);
@@ -37,19 +46,31 @@ public class DTWMultiCore {
         int MaxK=0;
         int MaxJ=0;
         int MaxL=0;
+        int MaxM=0;
+        int MaxCountTrial=0;
         int CountTrials=0;
         //Cross Folding
         for (int l=1;l<=20;l++)
-            for (int k=l;k<=20;k++)
+            for (int k=l+1;k<=20;k++)
             {
-            for (int j=k;j<=20;j++)
+            for (int j=k+1;j<=20;j++)
             {
+                for (int m=j+1;m<=20;m++)
+                {
                 CountTrials++;
-                System.out.println("Trial " +CountTrials + " with L,K,J "+l +","+ k + ","+j);
+                String S="Trial " +CountTrials + " with L,K,J,M "+l +","+ k + ","+j+ ","+m;
+                System.out.println(S);
+                //BW.write(S);
+                //BW.newLine();
+                S="MaxAccuracy so far = " + MaxAccAvg/8 + "Found at K= " + MaxK + " J = " + MaxJ +" L = " + MaxL +" M = " + MaxM +  " Trial " + MaxCountTrial;
+                System.out.println(S);
+               // BW.write(S);
+               // BW.newLine();
                 TemplateIndecis.clear();
                 TemplateIndecis.add(l);
                 TemplateIndecis.add(k);
                 TemplateIndecis.add(j);
+                TemplateIndecis.add(m);
         
         
        
@@ -72,20 +93,36 @@ public class DTWMultiCore {
             // while we block (wait) on one task to finish the others are still working
             avg += futures.get(i).get();
         }
-        System.out.println("Average is: "+avg/8);
+        S="Average is: "+avg/8;
+        System.out.println(S);
+        //BW.write(S);
+       // BW.newLine();
         if (avg>MaxAccAvg)
         {
             MaxAccAvg=avg;
             MaxJ=j;
             MaxK=k;
             MaxL=l;
-            System.out.println("MaxAccuracy so far = " + MaxAccAvg/8 + "Found at K= " + MaxK + " J = " + MaxJ +" L = " + MaxL +  " trial" + CountTrials);    
+            MaxM=m;
+            MaxCountTrial=CountTrials;
+            S="MaxAccuracy Updated = " + MaxAccAvg/8 + "Found at K= " + MaxK + " J = " + MaxJ +" L = " + MaxL + " MAxM "+MaxM+" trial" + CountTrials;
+            System.out.println(S);    
+           // BW.write(S);
+           // BW.newLine();
+        }
+       //BW.flush();
         }
        }
-       }
-        System.out.println("MaxAccuracy = " + MaxAccAvg + "Found at K= " + MaxK + " J = " + MaxJ+ "Max L= "+ MaxL);    
+      }
+        String S="MaxAccuracy = " + MaxAccAvg/8 + "Found at K= " + MaxK + " J = " + MaxJ+ "Max L= "+ MaxL + "Max M= "+ MaxM;
+        System.out.println(S);    
+       // BW.write(S);
+       // BW.newLine();
         Duration d = Duration.between(now, Instant.now());
         System.out.println("Time Taken: "+d); // Total time taken
+       // BW.write(""+d);
+        //BW.newLine();
+        //BW.close();
     }
     
 }
