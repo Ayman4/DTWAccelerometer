@@ -36,13 +36,18 @@ public class DTWMultiCore {
         double MaxAccAvg=0;
         int MaxK=0;
         int MaxJ=0;
+        int MaxL=0;
+        int CountTrials=0;
         //Cross Folding
-            for (int k=1;k<=20;k++)
+        for (int l=1;l<=20;l++)
+            for (int k=l;k<=20;k++)
             {
             for (int j=k;j<=20;j++)
             {
-                System.out.println("Trial with K,J" + k + ","+j);
+                CountTrials++;
+                System.out.println("Trial " +CountTrials + " with L,K,J "+l +","+ k + ","+j);
                 TemplateIndecis.clear();
+                TemplateIndecis.add(l);
                 TemplateIndecis.add(k);
                 TemplateIndecis.add(j);
         
@@ -73,10 +78,12 @@ public class DTWMultiCore {
             MaxAccAvg=avg;
             MaxJ=j;
             MaxK=k;
+            MaxL=l;
+            System.out.println("MaxAccuracy so far = " + MaxAccAvg/8 + "Found at K= " + MaxK + " J = " + MaxJ +" L = " + MaxL +  " trial" + CountTrials);    
         }
        }
        }
-        System.out.println("MaxAccuracy = " + MaxAccAvg + "Found at K= " + MaxK + " J = " + MaxJ);    
+        System.out.println("MaxAccuracy = " + MaxAccAvg + "Found at K= " + MaxK + " J = " + MaxJ+ "Max L= "+ MaxL);    
         Duration d = Duration.between(now, Instant.now());
         System.out.println("Time Taken: "+d); // Total time taken
     }
