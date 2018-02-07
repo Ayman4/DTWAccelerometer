@@ -8,6 +8,7 @@ package aymandtw;
 import static aymandtw.DTWMultiCore.TemplateIndecis;
 import static aymandtw.DTWMultiCore.tempalteofGes;
 import java.io.IOException;
+import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -60,6 +61,9 @@ public class TestDTWMultiCore {
             //avg = ;
             list.add(futures.get(i).get());
         }
+         Duration d = Duration.between(now, Instant.now());
+        System.out.println("Time Taken: "+d); // Total time taken
+        
         System.out.println("\nExample 3 - Count all with Map");
 	Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 
@@ -123,7 +127,7 @@ public class TestDTWMultiCore {
        
         tempalteofGes=new AllTemplateofGesturesTest(this.UserId);
            
-            String filename="U0"+3+"\\15\\05.txt";
+            String filename="U0"+1+"\\03\\05.txt";
              Gesture testgesture=Helper.LoadGesture(filename);
              Recognizer rec;
              rec=new DTW();
