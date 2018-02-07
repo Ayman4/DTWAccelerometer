@@ -68,12 +68,20 @@ public class TestDTWMultiCore {
 		map.put(temp, (count == null) ? 1 : count + 1);
 	}
 	printMap(map);
-
-	/*System.out.println("\nSorted Map");
-	Map<Integer, Integer> treeMap = new TreeMap<Integer, Integer>(map);
+       Map.Entry<Integer, Integer> maxEntry = null;
+        for (Map.Entry<Integer, Integer> entry : map.entrySet())
+        {
+            if (maxEntry == null || entry.getValue().compareTo(maxEntry.getValue()) > 0)
+            {
+                maxEntry = entry;
+            }
+        }
         
-	printMap(treeMap);
-        */
+	System.out.println("\n Max");
+	//Map<Integer, Integer> treeMap = new TreeMap<Integer, Integer>(map);
+        
+	       System.out.println("value"+maxEntry.getKey());
+        
 
   }
 
@@ -115,7 +123,7 @@ public class TestDTWMultiCore {
        
         tempalteofGes=new AllTemplateofGesturesTest(this.UserId);
            
-            String filename="U0"+2+"\\15\\05.txt";
+            String filename="U0"+3+"\\15\\05.txt";
              Gesture testgesture=Helper.LoadGesture(filename);
              Recognizer rec;
              rec=new DTW();
