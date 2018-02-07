@@ -16,6 +16,32 @@ import java.util.concurrent.Callable;
 public class DTW implements Recognizer 
 {
             
+    public int Recognize(Gesture Test, AllTemplateofGesturesTest template) {
+                    
+        
+                    int result=-1;
+        
+                    double MinValue=99999;
+                    int MinIndex=0;
+                    for (int i=0;i< template.AlltemplateofGestures.size();i++)// loop on all gestures
+                    {
+                        for (int j=0;j<template.AlltemplateofGestures.get(i).TemplateGestures.size();j++) // loop on each gesture templates
+                        {
+                        DTWoriginal dtw = new DTWoriginal(Test.Points, template.AlltemplateofGestures.get(i).TemplateGestures.get(j).Points);
+                    
+                        if (dtw.warpingDistance<MinValue)
+                        {
+                            MinValue=dtw.warpingDistance;
+                            MinIndex=i;
+//                            GestureIndex=GesturesDS;
+//                            userIndex=user;
+                        }
+                        }
+                   }
+                 // System.out.println("Gesture is "+ (MinIndex+1) + " Min distance is " + MinValue);
+                  result=MinIndex+1;
+  return result;
+    }
     @Override
     public int Recognize(Gesture Test, AllTemplateofGestures template) {
                     

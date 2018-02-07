@@ -11,4 +11,5 @@ package aymandtw;
  */
 public interface Recognizer {
     public int Recognize(Gesture Test,AllTemplateofGestures template);
+    public int Recognize(Gesture Test,AllTemplateofGesturesTest template);
 }

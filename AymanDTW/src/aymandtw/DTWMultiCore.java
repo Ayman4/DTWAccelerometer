@@ -33,10 +33,10 @@ public class DTWMultiCore {
     public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {
         // TODO code application logic here
         //BufferedWriter BW=new BufferedWriter(new FileWriter("D:\\GateWay\\Class\\Research Group\\2017\\My Work\\AymanDTW\\TestSample4.txt",true));
-        File file = new File("D:\\\\GateWay\\\\Class\\\\Research Group\\\\2017\\\\My Work\\\\AymanDTW\\\\TestSample4.txt"); //Your file
+        File file = new File("D:\\GateWay\\Research Group\\2017\\My Work\\AymanDTW\\TestSample4.txt"); //Your file
 FileOutputStream fos = new FileOutputStream(file);
-PrintStream ps = new PrintStream(fos);
-System.setOut(ps);
+//PrintStream ps = new PrintStream(fos);
+//System.setOut(ps);
         int cores = Runtime.getRuntime().availableProcessors();
         
         System.out.println("Available processor cores is "+cores);
@@ -62,7 +62,7 @@ System.setOut(ps);
                 System.out.println(S);
                 //BW.write(S);
                 //BW.newLine();
-                S="MaxAccuracy so far = " + MaxAccAvg/8 + "Found at K= " + MaxK + " J = " + MaxJ +" L = " + MaxL +" M = " + MaxM +  " Trial " + MaxCountTrial;
+                S="MaxAccuracy so far = " + MaxAccAvg/cores + "Found at K= " + MaxK + " J = " + MaxJ +" L = " + MaxL +" M = " + MaxM +  " Trial " + MaxCountTrial;
                 System.out.println(S);
                // BW.write(S);
                // BW.newLine();
@@ -93,7 +93,7 @@ System.setOut(ps);
             // while we block (wait) on one task to finish the others are still working
             avg += futures.get(i).get();
         }
-        S="Average is: "+avg/8;
+        S="Average is: "+avg/cores;
         System.out.println(S);
         //BW.write(S);
        // BW.newLine();
@@ -105,7 +105,7 @@ System.setOut(ps);
             MaxL=l;
             MaxM=m;
             MaxCountTrial=CountTrials;
-            S="MaxAccuracy Updated = " + MaxAccAvg/8 + "Found at K= " + MaxK + " J = " + MaxJ +" L = " + MaxL + " MAxM "+MaxM+" trial" + CountTrials;
+            S="MaxAccuracy Updated = " + MaxAccAvg/cores + "Found at K= " + MaxK + " J = " + MaxJ +" L = " + MaxL + " MAxM "+MaxM+" trial" + CountTrials;
             System.out.println(S);    
            // BW.write(S);
            // BW.newLine();
@@ -114,7 +114,7 @@ System.setOut(ps);
         }
        }
       }
-        String S="MaxAccuracy = " + MaxAccAvg/8 + "Found at K= " + MaxK + " J = " + MaxJ+ "Max L= "+ MaxL + "Max M= "+ MaxM;
+        String S="MaxAccuracy = " + MaxAccAvg/cores + "Found at K= " + MaxK + " J = " + MaxJ+ "Max L= "+ MaxL + "Max M= "+ MaxM;
         System.out.println(S);    
        // BW.write(S);
        // BW.newLine();

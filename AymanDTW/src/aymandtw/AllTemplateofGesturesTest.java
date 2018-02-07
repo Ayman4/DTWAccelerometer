@@ -12,13 +12,14 @@ import java.util.Vector;
  *
  * @author ayman.ezzat
  */
-public class AllTemplateofGestures {
-      Vector <TemplateGesture>AlltemplateofGestures=new Vector <TemplateGesture>() ;
-      public AllTemplateofGestures() throws IOException
+public class AllTemplateofGesturesTest {
+      Vector <TemplateGestureTest>AlltemplateofGestures=new Vector <TemplateGestureTest>() ;
+      public int userId;
+      public AllTemplateofGesturesTest(int userId) throws IOException
       {
           for (int i=1;i<=20;i++)
           {
-              TemplateGesture tempalteofGes=new TemplateGesture(String.format("%02d", i));
+              TemplateGestureTest tempalteofGes=new TemplateGestureTest(String.format("%02d", i),userId);
               AlltemplateofGestures.add(tempalteofGes);
           }
       }
