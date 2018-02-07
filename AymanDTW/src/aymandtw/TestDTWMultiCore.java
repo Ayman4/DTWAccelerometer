@@ -50,12 +50,12 @@ public class TestDTWMultiCore {
         List<Future<Integer>> futures = new ArrayList<Future<Integer>>(cores);
         
         // Populate the list of futures by submitting callables to the thread pool
-        for(int i=0;i<cores;i++) {
+        for(int i=0;i<8;i++) {
             futures.add(i,threadPool.submit(new Worker2(i+1))); // non-blocking
         }
         
        List<Integer> list = new ArrayList<Integer>();
-        for(int i=0;i<cores;i++) {
+        for(int i=0;i<8;i++) {
             // Future::get() is a blocking call until the task is done
             // while we block (wait) on one task to finish the others are still working
             //avg = ;
@@ -127,7 +127,7 @@ public class TestDTWMultiCore {
        
         tempalteofGes=new AllTemplateofGesturesTest(this.UserId);
            
-            String filename="U0"+1+"\\03\\05.txt";
+            String filename="U0"+4+"\\12\\05.txt";
              Gesture testgesture=Helper.LoadGesture(filename);
              Recognizer rec;
              rec=new DTW();
