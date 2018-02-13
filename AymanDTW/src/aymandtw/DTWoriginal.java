@@ -135,7 +135,7 @@ public class DTWoriginal {
 	protected double distanceBetween(AccPoint p1, AccPoint p2) {
 		//return (p1 - p2) * (p1 - p2);
                 return Math.sqrt(Math.pow(p1.ACCX-p2.ACCX,2)+Math.pow(p1.ACCY-p2.ACCY,2)+Math.pow(p1.ACCZ-p2.ACCZ,2));
-               // return Math.sqrt((Math.pow(p1.ACCY-p2.ACCY,2)));
+               // return Math.sqrt(Math.pow(p1.ACCX-p2.ACCX,2)+Math.pow(p1.ACCY-p2.ACCY,2));
 	}
     protected int getIndexOfMinimum(double[] array) {
 		int index = 0;

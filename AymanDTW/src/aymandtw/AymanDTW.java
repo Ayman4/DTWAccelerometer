@@ -38,7 +38,11 @@ public class AymanDTW {
         TemplateIndecis.add(1);
         TemplateIndecis.add(9);
         TemplateIndecis.add(17);
+        TemplateIndecis.add(4);
         
+        //For better Acc
+        TemplateIndecis.add(15);
+        TemplateIndecis.add(16);
         
         AllTemplateofGestures tempalteofGes=new AllTemplateofGestures();
        

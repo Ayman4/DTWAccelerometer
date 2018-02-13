@@ -127,7 +127,7 @@ public class TestDTWMultiCore {
        
         tempalteofGes=new AllTemplateofGesturesTest(this.UserId);
            
-            String filename="U0"+7+"\\07\\06.txt";
+            String filename="U0"+1+"\\10\\UpLeft.txt";
              Gesture testgesture=Helper.LoadGesture(filename);
              Recognizer rec;
              rec=new DTW();

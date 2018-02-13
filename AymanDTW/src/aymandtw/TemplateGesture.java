@@ -18,6 +18,29 @@ import java.util.Vector;
 public class TemplateGesture {
     String TemplateGestureName;
     Vector <Gesture>TemplateGestures=new Vector <Gesture>() ;
+    public TemplateGesture(String name,int UserID) throws FileNotFoundException, IOException
+    {
+                
+                this.TemplateGestureName=name;
+                
+                    for (int i=1;i<=20;i++)
+                    {
+                       // if (AymanDTW.TemplateIndecis.contains(i))
+                        if (DTWMultiCore.TemplateIndecis.contains(i))
+                       // if (DTWMultiCoreTest1Sample.TemplateIndecis.contains(i))
+                        {
+                            Gesture gesture=new Gesture();
+                            gesture.GestureName=TemplateGestureName;
+                            gesture.UID=""+UserID;
+                           String filename="U0"+UserID+"\\"+this.TemplateGestureName+"\\"+String.format("%02d", i)+".txt";
+                           gesture=Helper.LoadGesture(filename);
+                            //NormalizeCurveNew(TemplateX,30);
+                             TemplateGestures.add(gesture);
+                        }
+                    }
+                 
+                
+    }
     public TemplateGesture(String name) throws FileNotFoundException, IOException
     {
                 
@@ -29,6 +52,7 @@ public class TemplateGesture {
                     {
                        // if (AymanDTW.TemplateIndecis.contains(i))
                         if (DTWMultiCore.TemplateIndecis.contains(i))
+                       // if (DTWMultiCoreTest1Sample.TemplateIndecis.contains(i))
                         {
                             Gesture gesture=new Gesture();
                             gesture.GestureName=TemplateGestureName;
