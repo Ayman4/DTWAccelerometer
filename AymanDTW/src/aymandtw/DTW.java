@@ -28,6 +28,7 @@ public class DTW implements Recognizer
                         for (int j=0;j<template.AlltemplateofGestures.get(i).TemplateGestures.size();j++) // loop on each gesture templates
                         {
                         DTWoriginal dtw = new DTWoriginal(Test.Points, template.AlltemplateofGestures.get(i).TemplateGestures.get(j).Points);
+                        //System.out.println("Size Template = " + template.AlltemplateofGestures.get(i).TemplateGestures.get(j).Points.size());
                     
                         if (dtw.warpingDistance<MinValue)
                         {
@@ -38,7 +39,7 @@ public class DTW implements Recognizer
                         }
                         }
                    }
-                 // System.out.println("Gesture is "+ (MinIndex+1) + " Min distance is " + MinValue);
+                 //System.out.println("Gesture is "+ (MinIndex+1) + " Min distance is " + MinValue);
                   result=MinIndex+1;
   return result;
     }

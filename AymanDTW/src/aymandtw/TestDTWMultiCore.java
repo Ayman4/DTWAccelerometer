@@ -42,8 +42,8 @@ public class TestDTWMultiCore {
                 TemplateIndecis.add(4);
                 TemplateIndecis.add(17);
            
-            //ExecutorService threadPool = Executors.newSingleThreadExecutor();
-        ExecutorService threadPool = Executors.newCachedThreadPool();
+            ExecutorService threadPool = Executors.newSingleThreadExecutor();
+        //ExecutorService threadPool = Executors.newCachedThreadPool();
         //ExecutorService threadPool = Executors.newWorkStealingPool();
         
         // Each future will have the average of the list of random doubles
@@ -127,10 +127,12 @@ public class TestDTWMultiCore {
        
         tempalteofGes=new AllTemplateofGesturesTest(this.UserId);
            
-            String filename="U0"+1+"\\10\\UpLeft.txt";
+            String filename="U0"+1+"\\15\\Test.txt";
              Gesture testgesture=Helper.LoadGesture(filename);
+             
              Recognizer rec;
              rec=new DTW();
+            // System.out.println("Size " + testgesture.Points.size());
              Integer Recognized=rec.Recognize(testgesture,tempalteofGes);
              System.out.println("User ID= "+this.UserId+", Rec ="+ Recognized);
         return Recognized;
