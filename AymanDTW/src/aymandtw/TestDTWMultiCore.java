@@ -28,10 +28,9 @@ import java.util.concurrent.Future;
 public class TestDTWMultiCore {
      public static ArrayList<Integer>  TemplateIndecis=new ArrayList<Integer>();
    
-   
-    public static void main(String[] args) throws IOException, InterruptedException, ExecutionException
-    {
-      int cores = Runtime.getRuntime().availableProcessors();
+   public static void Start() throws InterruptedException, ExecutionException
+   {
+   int cores = Runtime.getRuntime().availableProcessors();
         
         System.out.println("Available processor cores is "+cores);
         //cores=1;
@@ -84,8 +83,19 @@ public class TestDTWMultiCore {
 	System.out.println("\n Max");
 	//Map<Integer, Integer> treeMap = new TreeMap<Integer, Integer>(map);
         
-	       System.out.println("value"+maxEntry.getKey());
+	System.out.println("value"+maxEntry.getKey());
+        UpdateRecognizedDB Up=new UpdateRecognizedDB();
+        Up.RecognizedGestId=maxEntry.getKey().toString();
+        Up.TripId=CheckDB.LastTripID;
+        Thread x=new Thread(Up);
+        x.start();
         
+
+      
+   }
+    public static void main(String[] args) throws IOException, InterruptedException, ExecutionException
+    {
+      Start();  
 
   }
 
@@ -127,7 +137,8 @@ public class TestDTWMultiCore {
        
         tempalteofGes=new AllTemplateofGesturesTest(this.UserId);
            
-            String filename="U0"+1+"\\15\\Test.txt";
+            //String filename="U0"+1+"\\19\\Test";
+            String filename="D:\\GateWay\\Class\\Research Group\\2017\\My Work\\gestures-dataset\\gestures-dataset\\Test.txt";
              Gesture testgesture=Helper.LoadGesture(filename);
              
              Recognizer rec;
